@@ -1,0 +1,11 @@
+.homeContainer {
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &_wrapper {
+        display: flex;
+        width: 900px;
+    }
+}
