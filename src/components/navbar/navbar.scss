@@ -9,6 +9,7 @@
     top: 0;
     z-index: 999;
     background-color: white;
+    overflow-x: unset;
     &_center {
         display: flex;
         height: 100%;
@@ -17,7 +18,7 @@
         justify-content: center;
         &_wrapper {
             height: 100%;
-            width: 100%;
+            width: 99%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -98,6 +99,19 @@
                         margin-left: 10px;
                         margin-bottom: 4px;
                     }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .navbar {
+        &_center {
+            &_wrapper {
+                .navabar_center {
+                    background-color: red;
+                    display: none !important;
                 }
             }
         }
