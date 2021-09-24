@@ -21,21 +21,19 @@ const Post = () => {
           <img src="images/comment.svg" alt="like" className="post_func" />
           <img src="images/share.svg" alt="like" className="post_func" />
         </div>
-
         <img src="images/save.svg" alt="" className="post_func2" />
-        <span className="post_likes">20 likes</span>
       </div>
+      <span className="post_likes">20 likes</span>
       <div className="post_desc">
         <p className="post_desc_data">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio
           aperiam laudantium neque? Placeat, culpa exercitationem! Ipsum ea
           dolorum minima praesentium commodi voluptatibus autem id iste
           exercitationem provident nihil inventore tenetur officia, aut animi!
-          Commodi eligendi perferendis ab obcaecati accusantium.
         </p>
       </div>
       <div className="post_comment">
-        <VscComment />
+        <VscComment className="post_comment_icon" />
         <input
           type="text"
           placeholder="Add a comment..."

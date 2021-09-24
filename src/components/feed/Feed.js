@@ -7,11 +7,11 @@ const Feed = () => {
       <div className="feed_wrapper">
         <div className="feed_left">
           <div className="feed_stories"></div>
-          <div className="feed_posts">
-            <Post />
-            <Post />
-            <Post />
-          </div>
+          {/* <div className="feed_posts"> */}
+          <Post />
+          <Post />
+          <Post />
+          {/* </div> */}
         </div>
         <div className="feed_right">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum,
