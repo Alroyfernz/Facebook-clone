@@ -1,0 +1,33 @@
+.suggestion {
+    height: 50px;
+    width: 100%;
+    margin-top: 5px;
+    // padding: 10px;
+    &_wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .userImg {
+            .userImage {
+                width: 40px !important;
+                height: 40px !important;
+                border-radius: 50%;
+            }
+        }
+        .userTitle {
+            display: flex;
+            margin-left: 8px;
+            margin-right: 22px;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .userFollow {
+            margin-left: 100px;
+            color: rgba(var(--d69, 0, 149, 246), 1);
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}

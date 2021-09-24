@@ -36,6 +36,81 @@
             position: fixed;
             top: 0;
             right: 220px;
+            &_top {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                &_left {
+                    padding: 10px;
+                    .feed_right_img {
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 50%;
+                    }
+                }
+                &_center {
+                    padding: 10px;
+                    display: flex;
+                    flex-direction: column;
+
+                    justify-content: center;
+                }
+                .rightSide {
+                    // padding: 10px;
+                    // display: flex;
+                    // width: 100%;
+                    // align-items: center;
+                    // justify-content: space-between;
+                    margin-left: 90px;
+                    color: rgba(var(--d69, 0, 149, 246), 1);
+
+                    // .feed_right_logout {
+                    //     color: rgb(91, 186, 218);
+                    // }
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+            &_middle {
+                display: flex;
+                justify-content: space-between;
+
+                .feed_middle_text1 {
+                    color: #8e8e8e;
+                }
+            }
+            &_bottom {
+                width: 100%;
+                margin-top: 20px;
+            }
+            &_footer {
+                margin-top: 15px;
+                .footerTop {
+                    width: 100%;
+                    margin-bottom: 10px;
+                    .footerItem {
+                        display: flex;
+                        flex-wrap: wrap;
+                        .footerItems {
+                            list-style: none;
+                            margin: 5px;
+                            color: #8e8e8e;
+                            &:hover {
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+                .footerBottom {
+                    // padding: 10px;
+                    color: #8e8e8e;
+
+                    font-size: 13px;
+                }
+            }
         }
     }
 }
