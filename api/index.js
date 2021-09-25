@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const App = express();
 const dotenv = require("dotenv");
+const authRouter = require("./routes/auth");
 dotenv.config();
 mongoose
   .connect(process.env.MONGO_URL)
@@ -9,6 +10,8 @@ mongoose
   .catch((error) => {
     console.log("Error while connecting to database");
   });
+App.use(express.json());
+App.use("/api/auth", authRouter);
 
 App.listen(process.env.PORT, () => {
   console.log("Backend server running");

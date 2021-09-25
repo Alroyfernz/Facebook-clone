@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const { findByIdAndUpdate } = require("../models/Post");
 const Post = require("../models/Post");
 const User = require("../models/User");
 router.post("/post", async (req, res) => {
@@ -22,8 +23,23 @@ router.post("/post", async (req, res) => {
 
 router.post("update/:id", async (req, res) => {
   try {
-    const currentPost = Post.findById();
-  } catch (error) {}
+    const currentPost = await findByIdAndUpdate(req.params.id, {
+      $set: req.body,
+    });
+    const newUpdatedPost = await currentPost.save();
+    res.status(200).send(newUpdatedPost);
+  } catch (error) {
+    res.status(500).json("error while updating");
+  }
+});
+
+router.delete("delete/:id", async (req, res) => {
+  try {
+    await Post.findByIdAndDelete(req.params.id);
+    res.json("post deleted");
+  } catch (error) {
+    res.status(500).json("post deletion error");
+  }
 });
 router.get("user/:userId", async (req, res) => {
   try {

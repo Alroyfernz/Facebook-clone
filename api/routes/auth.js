@@ -10,9 +10,11 @@ router.post("/register", async (req, res) => {
     });
 
     const user = await newUser.save();
-    res.statusCode(200).send(user);
+    const token = await User.generateAtuhToken();
+    console.log(token);
+    res.statusCode(200).json(user);
   } catch (error) {
-    res.status(500).json("error while registering");
+    res.status(500).json(error);
   }
 });
 
@@ -27,3 +29,5 @@ router.post("/login", async (req, res) => {
     req.status(500).json(error);
   }
 });
+
+module.exports = router;
