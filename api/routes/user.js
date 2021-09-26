@@ -46,4 +46,40 @@ router.get("/:id", async (req, res) => {
     res.status(500).json(error);
   }
 });
+
+router.put("/:id/add", async (req, res) => {
+  if (req.body.userId !== req.params.id) {
+    try {
+      const currentUser = await User.findById(req.params.id);
+      const user = await User.findById(req.body.userId);
+      if (!currentUser.friends.includes(req.body.userId)) {
+        await currentUser.updateOne({ $push: { friends: req.body.userId } });
+        await user.updateOne({ $push: { friends: req.params.id } });
+        res.status(200).send("user added to friends list");
+      } else {
+        res.status(403).json("You are already friends with this user");
+      }
+    } catch (error) {}
+  } else {
+    res.status(403).json("you cannot add yourself");
+  }
+});
+
+router.put("/:id/remove", async (req, res) => {
+  if (req.body.userId !== req.params.id) {
+    try {
+      const currentUser = await User.findById(req.params.id);
+      const user = await User.findById(req.body.userId);
+      if (currentUser.friends.includes(req.body.userId)) {
+        await currentUser.updateOne({ $pull: { friends: req.body.userId } });
+        await user.updateOne({ $pull: { friends: req.params.id } });
+        res.status(200).send("user removed from friends list");
+      } else {
+        res.status(403).json("you arent friends");
+      }
+    } catch (error) {}
+  } else {
+    res.status(403).json("you cannot remove yourself");
+  }
+});
 module.exports = router;
