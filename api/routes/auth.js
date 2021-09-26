@@ -8,11 +8,10 @@ router.post("/register", async (req, res) => {
       username: req.body.username,
       password: req.body.password,
     });
-
     const user = await newUser.save();
-    const token = await User.generateAtuhToken();
-    console.log(token);
-    res.statusCode(200).send(user);
+    // await User.generateAtuhToken();
+    // console.log(token);
+    res.status(200).json(user);
   } catch (error) {
     res.status(500).json(error);
   }

@@ -48,7 +48,10 @@ const userSchema = new mongoose.Schema(
 
 userSchema.methods.generateAuthToken = async function () {
   try {
-    let token = jwt.sign({ _id: this._id }, "asdfghjklzxccvbmkiureshdhd");
+    let token = jwt.sign(
+      { _id: this._id },
+      "asdfghjklzxccvbmkiureshdhdddddsaaasddsaaaajhjsskslss"
+    );
     this.tokens = this.tokens.concat({ token: token });
     await this.save();
     return token;
@@ -59,7 +62,7 @@ userSchema.methods.generateAuthToken = async function () {
 
 userSchema.pre("save", async function (next) {
   if (this.isModified("password")) {
-    this.password = bcrypt.hash(this.password, 12);
+    this.password = await bcrypt.hash(this.password, 12);
   }
   next();
 });
