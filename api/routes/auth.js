@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const bcrypt = require("bcrypt");
 const User = require("../models/User");
 
 router.post("/register", async (req, res) => {
@@ -19,13 +20,17 @@ router.post("/register", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   try {
-    const user = user.findOne({ username: req.body.username });
-    !user && res.status(500).json("no user found");
-    const confirmedPassword = bcrypt.compare(user.password, req.body.password);
-    !confirmedPassword && res.status(500).json("wrong password");
-    if (user && confirmedPassword) res.status(200).send(user);
+    const user = await User.findOne({ username: req.body.username });
+    !user && res.status(404).json("no user found");
+    const confirmedPassword = await bcrypt.compare(
+      user.password,
+      req.body.password
+    );
+    console.log(confirmedPassword);
+    // !confirmedPassword && res.status(404).json("wrong password");
+    res.status(200).send(user);
   } catch (error) {
-    req.status(500).json(error);
+    res.status(500).json("error while login");
   }
 });
 
