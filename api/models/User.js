@@ -58,7 +58,7 @@ userSchema.methods.generateAuthToken = async function () {
 };
 
 userSchema.pre("save", async function (next) {
-  if (this.isModified("password") === true) {
+  if (this.isModified("password")) {
     this.password = bcrypt.hash(this.password, 12);
   }
   next();
