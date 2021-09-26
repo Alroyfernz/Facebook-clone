@@ -4,6 +4,7 @@ const app = express();
 const dotenv = require("dotenv");
 const authRouter = require("./routes/auth");
 const userRouter = require("./routes/user");
+const postRouter = require("./routes/post");
 
 dotenv.config();
 mongoose
@@ -15,6 +16,7 @@ mongoose
 app.use(express.json());
 app.use("/api/auth", authRouter);
 app.use("/api/user", userRouter);
+app.use("/api/posts", postRouter);
 
 app.listen(process.env.PORT, () => {
   console.log("Backend server running");
